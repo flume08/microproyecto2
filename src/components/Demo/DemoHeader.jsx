@@ -21,11 +21,7 @@ const DemoHeader = () => {
     transition-all duration-500`}>
       <div className="size h-[70px] flex items-center justify-between">
         <Link to={"/"}>
-          <img
-            className="h-[2.5rem]"
-            src="https://miro.medium.com/v2/resize:fit:8978/1*s986xIGqhfsN8U--09_AdA.png"
-            alt="logo"
-          />
+          Flume and Malayo
         </Link>
         <div className="flex items-center gap-5">
           <div className="hidden text-sm sm:flex items-center gap-5">
