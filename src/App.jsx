@@ -1,5 +1,6 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Await, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
+import VideoGameSearch from "./components/Home/Buscador";
 import VistaClub from "./components/Home/Club";
 import Demo from "./components/Demo/Demo";
 import HomeHeader from "./components/Home/Header/HomeHeader";
@@ -11,12 +12,15 @@ import Write from "./components/Home/Write/Write";
 import SinglePost from "./components/Common/Posts/SinglePost";
 import EditPost from "./components/Common/Posts/EditPost";
 import FilterPost from "./components/Demo/FilterPost";
+import { setDoc } from "firebase/firestore";
 
 function App() {
   const { currentUser } = Blog();
 
   return (
+    
     <>
+    
       {currentUser ? <HomeHeader /> : <DemoHeader />}
       <ToastContainer />
       <Routes>
@@ -25,15 +29,20 @@ function App() {
         <Route path="/profile/:userId" element={<Profile />} />
         <Route path="/write" element={<Write />} />
         <Route path="/post/:postId" element={<SinglePost />} />
-        <Route path="/editPost/:postId" element={<EditPost />} />
-        <Route path="/filter/:tag" element={<FilterPost />} />
+        <Route path="/clubes/:id" element={<VistaClub />}  />
+        <Route path="/buscador" element={<VideoGameSearch/>} />
+
+
         <Route
           path="*"
           element={<Navigate to={!currentUser ? "/demo" : "/"} />}
         />
+        
       </Routes>
     </>
   );
 }
 
+
 export default App;
+

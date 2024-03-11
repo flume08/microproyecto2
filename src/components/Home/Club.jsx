@@ -7,7 +7,7 @@ function VistaClub() {
     let { id } = useParams(); 
 
     useEffect(() => {
-        const obtenerClub = () => {
+        const obtenerClub = async () => {
         //    const refClubs = query(collection0(db, 'clubes', id));
         //    onSnapshot(refClubs, (data) => {
                 setClub({
