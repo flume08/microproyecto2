@@ -8,15 +8,11 @@ function VistaClub() {
 
     useEffect(() => {
         const obtenerClub = async () => {
-        //    const refClubs = query(collection0(db, 'clubes', id));
-        //    onSnapshot(refClubs, (data) => {
-                setClub({
-                  "ID": "2",
-                  "nombre": "Club de Estrategia",
-                  "descripcion": "Reúnete con estrategas brillantes para debatir tácticas, resolver enigmas y conquistar mundos virtuales.",
-                  "videojuegos": ["4", "15", "16"]
-                })
-        //    })
+          const refClubs = query(collection0(db, 'clubes', nombre));
+            onSnapshot(refClubs, (data) => {
+                console.log(data)
+                setClub(data)
+           })
         }
         const obtenerJuegos = () => {
         //    const refClubs = query(collection0(db, 'clubes', id));

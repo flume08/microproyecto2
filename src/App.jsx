@@ -1,6 +1,6 @@
 import { Await, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
-import VideoGameSearch from "./components/Home/Buscador";
+
 import VistaClub from "./components/Home/Club";
 import Demo from "./components/Demo/Demo";
 import HomeHeader from "./components/Home/Header/HomeHeader";
@@ -30,7 +30,7 @@ function App() {
         <Route path="/write" element={<Write />} />
         <Route path="/post/:postId" element={<SinglePost />} />
         <Route path="/clubes/:id" element={<VistaClub />}  />
-        <Route path="/buscador" element={<VideoGameSearch/>} />
+
 
 
         <Route

@@ -11,7 +11,7 @@ const Home = () => {
 
 
   function navegarAlClub(club){
-
+    console.log(club)
       navigate('/clubes/' + club.nombre);
     
   }
