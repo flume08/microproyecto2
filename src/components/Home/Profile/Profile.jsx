@@ -16,17 +16,9 @@ const Profile = () => {
   const { userId } = useParams();
   const activities = [
     {
-      title: "Home",
+      title: "Memberships",
       comp: ProfileHome,
-    },
-    {
-      title: "Lists",
-      comp: ProfileLists,
-    },
-    {
-      title: "About",
-      comp: ProfileAbout,
-    },
+    }
   ];
   const [currentActive, setCurrentActive] = useState(activities[0]);
   const [modal, setModal] = useState(false);
@@ -34,8 +26,8 @@ const Profile = () => {
 
   const getUserData = allUsers.find((user) => user.id === userId);
 
-  const { data: follows } = useSingleFetch("users", userId, "follows");
-  const { data: followers } = useSingleFetch("users", userId, "followers");
+  const { data: memberships } = useSingleFetch("users", userId, "follows");
+
 
   return (
     <section className="size flex gap-[4rem] relative">
@@ -46,10 +38,10 @@ const Profile = () => {
             {getUserData?.username}
           </h2>
           <p className="text-gray-500 text-xs sm:text-sm">
-            Followers({followers.length})
+
           </p>
           <p className="text-gray-500 text-xs sm:text-sm">
-            Followings({follows.length})
+            Memberships({memberships.length})
           </p>
         </div>
         <div className="flex items-center gap-5 mt-[1rem] border-b border-gray-300 mb-[3rem]">
@@ -118,11 +110,7 @@ const Profile = () => {
             )}
             {/* nav  */}
             <div className="flex-[1] flex items-center flex-wrap gap-3 pt-8">
-              {discoverActions.map((item) => (
-                <button key={item} className="text-xs text-black1">
-                  {item}
-                </button>
-              ))}
+              
             </div>
           </div>
         </div>
