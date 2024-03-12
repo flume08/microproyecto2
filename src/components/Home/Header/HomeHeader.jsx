@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { BsFillDoorOpenFill } from "react-icons/bs";
-import { CiSearch } from "react-icons/ci";
-import { LiaEditSolid } from "react-icons/lia";
-import { IoMdNotificationsOutline } from "react-icons/io";
+
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Search from "./Search";
+
 import Modal from "../../../utils/Modal";
 import UserModal from "./UserModal";
 import { Blog } from "../../../Context/Context";

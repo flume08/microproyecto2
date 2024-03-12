@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { auth, db } from "../../firebase/firebase";
+import { collection, onSnapshot, query, getDocs } from "firebase/firestore";
 
 function VistaClub() {
      const [club, setClub] = useState(null);
@@ -8,7 +10,7 @@ function VistaClub() {
 
     useEffect(() => {
         const obtenerClub = async () => {
-          const refClubs = query(collection0(db, 'clubes', nombre));
+          const refClubs = query(collection(db, 'club'));
             onSnapshot(refClubs, (data) => {
                 console.log(data)
                 setClub(data)

@@ -124,7 +124,7 @@ const EditProfile = ({ editModal, setEditModal, getUserData }) => {
             maxLength={50}
           />
           <p className="text-sm text-gray-600 pt-2">
-            Appears on your Profile page, as your byline, and in your responses.
+
             {form.username.length}/50
           </p>
           <section className="pt-[1rem] text-sm">
@@ -140,7 +140,7 @@ const EditProfile = ({ editModal, setEditModal, getUserData }) => {
               maxLength={160}
             />
             <p className="text-sm text-gray-600 pt-2">
-              Appears on your Profile and next to your stories.{" "}
+              Appears on your Profile.{" "}
               {form.bio.length}/160
             </p>
           </section>

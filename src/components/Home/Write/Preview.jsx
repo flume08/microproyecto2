@@ -137,8 +137,7 @@ const Preview = ({ setPublish, description, title }) => {
               <span className="font-bold capitalize">Milad Tech</span>
             </h3>
             <p>
-              Add or change topics up to 5 so readers know what your story is
-              about
+
             </p>
             <TagsInput value={tags} onChange={setTags} />
             <button

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import ProfileHome from "./Activities/ProfileHome";
-import ProfileLists from "./Activities/ProfileLists";
-import ProfileAbout from "./Activities/ProfileAbout";
+
 import Modal from "../../../utils/Modal";
 import { LiaTimesSolid } from "react-icons/lia";
 import { IoSettingsSharp } from "react-icons/io5";
-import { discoverActions } from "../../../data";
+
 import EditProfile from "./EditProfile";
 import { Blog } from "../../../Context/Context";
 import { useParams } from "react-router-dom";
