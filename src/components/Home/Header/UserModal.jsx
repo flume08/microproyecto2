@@ -19,21 +19,6 @@ const UserModal = ({ setModal }) => {
       icon: <LiaUserSolid />,
       path: `/profile/${currentUser?.uid}`,
     },
-    {
-      title: "Library",
-      icon: <MdOutlineLocalLibrary />,
-      path: "/library",
-    },
-    {
-      title: "Stories",
-      icon: <BiSpreadsheet />,
-      path: "/stories",
-    },
-    {
-      title: "Stats",
-      icon: <HiOutlineChartBar />,
-      path: "/stats",
-    },
   ];
 
   const navigate = useNavigate(null);
