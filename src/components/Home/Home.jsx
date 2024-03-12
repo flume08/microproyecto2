@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from "../../firebase/firebase";
-import { collection, onSnapshot, query, getDocs, setDoc, doc, arrayUnion, updateDoc } from "firebase/firestore";
+import { collection, onSnapshot, query, getDocs, setDoc, doc, arrayUnion, updateDoc, arrayRemove } from "firebase/firestore";
 
 const Home = () => {
   const [clubes, setClubes] = useState([]);
@@ -42,6 +42,17 @@ const Home = () => {
       alert("Error al suscribirse al club " + club.nombre)
     }
   };
+  const desuscribirseClubs = async (club) => {
+    try {
+      await updateDoc(doc(db, "club", club.id), {
+        miembros: arrayRemove(auth.currentUser.uid),
+      });
+      alert("Te has desuscrito del club " + club.nombre);
+    } catch (error) {
+      console.error("Error al desuscribirse del club:", error);
+      alert("Error al desuscribirse del club " + club.nombre)
+    }
+  };
 
   return (
     <section className="size flex gap-[5rem] relative">
@@ -53,6 +64,7 @@ const Home = () => {
                         <p class="font-normal text-gray-700 dark:text-gray-400">{club?.descripcion}</p>
                     </a>
                     <button type="button" class="px-6 py-3.5 text-white mt-4 bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={() => suscribeClubs(club)}>Registrate</button>
+                    <button type="button" class="px-6 py-3.5 text-white mt-4 bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={() => desuscribirseClubs(club)}>Desuscribirse</button>
                 </div>
         ))
       }

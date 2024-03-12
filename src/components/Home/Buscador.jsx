@@ -61,6 +61,7 @@ const BuscadorVideojuegos = () => {
               <p className="mb-2"><span className="font-bold">Título:</span> {juegoEncontrado.titulo}</p>
               <p className="mb-2"><span className="font-bold">Género:</span> {juegoEncontrado.genero}</p>
               <p><span className="font-bold">Descripción:</span> {juegoEncontrado.descripcion}</p>
+              
             </div>
           ) : (
             <p className="mt-4 text-red-500">No se encontró ningún juego con ese título.</p>
