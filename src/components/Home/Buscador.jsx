@@ -8,11 +8,11 @@ const BuscadorVideojuegos = () => {
     const [busqueda, setBusqueda] = useState('');
     const [juegoEncontrado, setJuegoEncontrado] = useState(null);
 
-  
 
-  
+
+
     useEffect(() => {
-      
+
       const obtenerJuegos = async () => {
         const refJuegos = query(collection(db, 'videojuego'));
         const snap = await getDocs(refJuegos);
@@ -22,7 +22,7 @@ const BuscadorVideojuegos = () => {
         })
         setJuegos(juegos);
      }
-      
+
 
       obtenerJuegos();
     }, []);
@@ -54,14 +54,13 @@ const BuscadorVideojuegos = () => {
           >
             Buscar
           </button>
-    
+
           {juegoEncontrado ? (
             <div className="mt-4">
               <h3 className="text-xl font-semibold mb-2">Resultado de la búsqueda:</h3>
               <p className="mb-2"><span className="font-bold">Título:</span> {juegoEncontrado.titulo}</p>
               <p className="mb-2"><span className="font-bold">Género:</span> {juegoEncontrado.genero}</p>
               <p><span className="font-bold">Descripción:</span> {juegoEncontrado.descripcion}</p>
-              
             </div>
           ) : (
             <p className="mt-4 text-red-500">No se encontró ningún juego con ese título.</p>
@@ -69,7 +68,7 @@ const BuscadorVideojuegos = () => {
         </div>
       );
     };
-    
+
 
 
 export default BuscadorVideojuegos;
