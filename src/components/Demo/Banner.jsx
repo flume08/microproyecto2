@@ -10,9 +10,6 @@ const Banner = () => {
         <p className="w-full md:w-[31rem] text-[1.3rem] md:text-[1.5rem] font-medium leading-7">
           Discover competitive groups for your favorite games
         </p>
-        <button className="btn bg-black1 rounded-full text-white !text-[1.2rem] !px-6 !mt-[2.5rem]">
-          Start reading
-        </button>
       </div>
     </div>
   );
