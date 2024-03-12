@@ -4,6 +4,7 @@ import { Blog } from "../../../../Context/Context";
 import Loading from "../../../Loading/Loading";
 import PostsCard from "../../../Common/Posts/PostsCard";
 import { BiLock } from "react-icons/bi";
+import { getDocs, where, query } from "firebase/firestore";
 
 const ProfileLists = ({ getUserData }) => {
   const { currentUser } = Blog();
@@ -12,6 +13,45 @@ const ProfileLists = ({ getUserData }) => {
     currentUser?.uid,
     "savePost"
   );
+
+  const obtenerClubes = async () => {
+    const clubesRef = query(
+      collection(db, "clubes"),
+      where("miembros", "array-contains", currentUser.uid)
+    );
+    const clubesSnapshot = await getDocs(clubesRef);
+    const clubes = clubesSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    return clubes;
+  };
+
+  const mostrarClubes = () => {
+    const [clubes, setClubes] = React.useState([]);
+
+    React.useEffect(() => {
+      obtenerClubes().then((clubes) => {
+        setClubes(clubes);
+      });
+    }, []);
+
+    return (
+      <section className="size flex gap-[5rem] relative">
+        {clubes.map((club) => (
+          <div key={club.id}>
+            <h2 className="text-xl font-bold mb-[1rem]">{club.nombre}</h2>
+            <ul className="list-disc list-inside">
+              {club.miembros.map((miembro) => (
+                <li key={miembro}>{miembro}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
+    );
+  };
+
   return (
     <div>
       {currentUser && currentUser?.uid === getUserData?.userId ? (
@@ -19,7 +59,7 @@ const ProfileLists = ({ getUserData }) => {
           {data && data.length === 0 && (
             <p className="text-gray-500">
               <span className="capitalize mr-1">{getUserData?.username}</span>{" "}
-              has no saved post
+              Has no merberships
             </p>
           )}
           {loading ? (
@@ -27,6 +67,7 @@ const ProfileLists = ({ getUserData }) => {
           ) : (
             data && data?.map((post, i) => <PostsCard post={post} key={i} />)
           )}
+          {mostrarClubes()}
         </div>
       ) : (
         <PrivateLists username={getUserData?.username} />
